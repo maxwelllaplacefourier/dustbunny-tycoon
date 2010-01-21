@@ -19,3 +19,4 @@ There's a good document on this, and please glance this as well to better unders
 
 Keywords:
 [http://en.wikipedia.org/wiki/WiMAX WiMAX]
+[http://en.wikipedia.org/wiki/Wi-Fi WiFi]
