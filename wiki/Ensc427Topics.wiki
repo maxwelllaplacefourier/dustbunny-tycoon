@@ -4,6 +4,6 @@
 
 To do
 
-= WiMAX/3G WiFi Access Point =
+= WiMAX/3G *WiFi Access Point =
 
 To do
