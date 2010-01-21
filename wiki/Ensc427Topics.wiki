@@ -6,8 +6,8 @@ To do
 
 = WiMAX/3G !WiFi Access Point =
 
-Using WiMAX as the access point for delivering WiFi connection to its devices:
- * basically WiMAX and WiFi together.  (a router device can supply this service)
+Using WiMAX as the access point for delivering Wi-Fi connection to its devices:
+ * basically WiMAX and Wi-Fi together.  (a router device can supply this service)
  * performance evaluation of VoIP, video-streaming, or Video On Demand (VOD) 
 
 There's a good document on this, and please glance this as well to better understand.
