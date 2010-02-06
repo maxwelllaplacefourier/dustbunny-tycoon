@@ -1,3 +1,3 @@
 #summary Abstract for Assignment 4 Submission
 
-Machine to machine communication has long been considered a feature of the next technological age. Today, there are many scenarios where it would be beneficial to connect devices however 
+Machine to machine communication has long been considered a feature of the next technological age. Connection options available today, wired Ethernet, WiFi and cellular data modems are either too expensive for the benefits they offer or dont provide uniform enough connectivity. _reword previous_. 
