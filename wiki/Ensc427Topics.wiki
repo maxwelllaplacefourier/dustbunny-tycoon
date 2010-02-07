@@ -2,7 +2,7 @@
 
 = Message Ferrying =
 
-To do
+See [Abstract]
 
 = WiMAX/3G !WiFi Access Point =
 
@@ -11,7 +11,8 @@ Using WiMAX as the access point for delivering Wi-Fi connection to its devices:
  * performance evaluation of VoIP, video-streaming, or Video On Demand (VOD) 
 
 There's a good document on this, and please glance this as well to better understand.
- ->http://www.motorola.com/staticfiles/Business/Solutions/Industry%20Solutions/Service%20Providers/Wireless%20Operators/Wireless%20Broadband/wi4%20WiMAX/_Document/StaticFile/WiMAX_and_WiFI_Together_Deployment_Models_and_User_Scenarios.pdf
+
+ * http://www.motorola.com/staticfiles/Business/Solutions/Industry%20Solutions/Service%20Providers/Wireless%20Operators/Wireless%20Broadband/wi4%20WiMAX/_Document/StaticFile/WiMAX_and_WiFI_Together_Deployment_Models_and_User_Scenarios.pdf
 
 *Note*:  I don't think we can use 3G in OPNET because of licensing (We can ask Ljiljana). Then again  WiMAX is good enough.
 
