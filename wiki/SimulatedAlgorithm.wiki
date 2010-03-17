@@ -7,17 +7,32 @@
  * Relatively limited packet size (say 64 kb)
  * Independent packets - ie no segmentation and reassembly OR use of fountain/erasure ECCs (ex. [http://en.wikipedia.org/wiki/Raptor_code raptor codes])
 
-= Terminology =
+= Information From Sources =
 
  * We are dealing with task-oriented mobility in ferries (defn from [http://portal.acm.org/citation.cfm?id=989483] - this sources deals with message oriented mobility)
- * I was originally considering a scheme where nodes cluster and gateway nodes are responsible for communicating with ferries (terminology from section 6 of [http://portal.acm.org/citation.cfm?id=989483])
+ * I was originally considering a scheme where nodes cluster and 'gateway nodes' (not to be confused with the gateway nodes as defined in the network entities section below) are responsible for communicating with ferries (terminology from section 6 of [http://portal.acm.org/citation.cfm?id=989483])
 
-= Simplifications =
+== Existing Algorithms ==
 
- * All or nothing wireless links (ie no fading - either two nodes can transmit or they cant)
+ * MANET protocols (DSDV, OSLR, AODV, DSR) only work for connected subgraphs (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
 
-= General Considerations =
+= Our Simulation Implementation =
+
+== Network Entities (ie Node Types) ==
+
+*Source:* Nodes which generate messages to be delivered to gateways
+
+*Ferry:* Mobile transport mechanisms for messages. Provided a delayed link to transport messages from source nodes to destination gateways.
+
+*Gateway:* The destination for messages. Idea is that gateways connect to the internet. Once messages reach a gateway, they are routed through the internet to their final destination.
+
+== General Algorithms Considerations ==
 
  * Packet timeout (from [http://portal.acm.org/citation.cfm?id=989483])
- * Location aware partitions and ferries (?)
- * Routing algorithm vs a simpler delivery algorithm
+ * Use location aware partitions and ferries?
+ * Are we implementing a routing algorithm or a simpler delivery algorithm
+ * To what extent are nodes 
+
+== Simplifications and Assumptions ==
+
+ * All or nothing wireless links (ie no fading - either two nodes can transmit or they cant)
