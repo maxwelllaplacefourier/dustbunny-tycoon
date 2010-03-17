@@ -2,6 +2,8 @@
 
 = Application Specification =
 
+Applications using the network must have the following characteristics:
+
  * Delay tolerant
  * Loss tolerant
  * Relatively limited packet size (say 64-256 kb)
@@ -16,13 +18,19 @@
 
  * MANET protocols (DSDV, OSLR, AODV, DSR) only work for connected subgraphs (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
 
-= Our Simulation Implementation =
+= Specific to Our Project - General  =
+
+== General Premise ==
+
+The network contains numerous uniquely identifiable source nodes. Each source node supports a limited number of properties (in the form of key/value pairs). The network is designed to ensure a central repository has the current key/value pair for every source node.
 
 == Network ==
 
 === Network Entities (ie Node Types) ===
 
-*Source* (Abbreviated src): Nodes which generate messages to be delivered to gateways. A message from any source can be delivered to any gateway.
+*Message*: Contains data which updates the value associated with a [source node, key] pair. 
+
+*Source Node* (Abbreviated src): Nodes which generate messages to be delivered to gateways. A message from any source can be delivered to any gateway.
 
 *Message Ferry* (Abbreviated  mf): Mobile transport mechanisms for messages. Provided a delayed link to transport messages from source nodes to destination gateways.
 
@@ -35,10 +43,11 @@
 
 == General Algorithms Considerations ==
 
- * Packet timeout (from [http://portal.acm.org/citation.cfm?id=989483])
- * Use location aware partitions and ferries?
+ * Packet timeout (from [http://portal.acm.org/citation.cfm?id=989483 Message ferrying approach for data delivery])
+ * Use location aware partitions and ferries? - Probably not initially. I dont think it is needed unless we do src->src communication.
  * Are we implementing a routing algorithm or a simpler delivery algorithm
    * Routing can either be 'source routing' or 'per-hop' routing (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
+   * _Probably just implement message delivery initially_
  * Do source nodes store messages for inter-ferry transfer (ie message path: src1 -> mf1 -> src2 -> mf2 -> gateway) - *YES*
  * Do source nodes communicate with eachother (aka, clustering) (message path: src1 -> src2 -> mf1 -> gateway) - *NO* (much more complicated problem)
  * Source nodes should communicate directly with gateways if possible (message path: src -> gateway)
@@ -46,3 +55,14 @@
 == Simplifications and Assumptions ==
 
  * All or nothing wireless links (ie no fading - either two nodes can transmit or they cant)
+
+= Algorithm =
+
+== Packets ==
+
+=== Source Update Packet ===
+
+Fields:
+ * Source ID
+ * Property key (what is being updated)
+ * Key update counter
