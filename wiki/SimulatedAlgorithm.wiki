@@ -5,5 +5,13 @@
  * Delay tolerant
  * Loss tolerant
  * Relatively limited packet size (say 64 kb)
+ * Independent packets - ie no segmentation and reassembly OR use of fountain/erasure ECCs (ex. [http://en.wikipedia.org/wiki/Raptor_code raptor codes])
+
+== Network ==
+
+ * We are dealing with task-oriented mobility in ferries (defn from [http://portal.acm.org/citation.cfm?id=989483] - this sources deals with message oriented mobility)
 
 = General Considerations =
+
+ * Packet timeout (from [http://portal.acm.org/citation.cfm?id=989483])
+ * Location aware partitions and ferries (?)
