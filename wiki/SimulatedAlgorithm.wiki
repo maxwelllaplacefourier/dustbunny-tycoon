@@ -28,6 +28,8 @@ The network contains numerous uniquely identifiable source nodes. Each source no
 
 === Network Entities ===
 
+Terminology specific to this project.
+
 *Message*: Contains data which updates the value associated with a source node, key pair. 
 
 *Source Node* (Abbreviated src): Nodes which generate messages to be delivered to gateways. A message from any source can be delivered to any gateway.
@@ -47,6 +49,7 @@ The network contains numerous uniquely identifiable source nodes. Each source no
  * Use location aware partitions and ferries? - Probably not initially. I dont think it is needed unless we do src->src communication.
  * Are we implementing a routing algorithm or a simpler delivery algorithm
    * Routing can either be 'source routing' or 'per-hop' routing (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
+   * Note that src->src or gateway->src requires routing and that src->gateway does not
    * _Probably just implement message delivery initially_
  * Do source nodes store messages for inter-ferry transfer (ie message path: src1 -> mf1 -> src2 -> mf2 -> gateway) - *YES*
  * Do source nodes communicate with eachother (aka, clustering) (message path: src1 -> src2 -> mf1 -> gateway) - *NO* (much more complicated problem)
@@ -58,26 +61,35 @@ The network contains numerous uniquely identifiable source nodes. Each source no
 
 == Project Roadmap == 
 
-There are a few stages to implementing and simulating our project. I am not sure how many we will get to (doing only the first will probably be sufficient). Each stage adds features from the last. The "->" shows message transmission 
+There are a few stages to implementing and simulating our project. I am not sure how many we will get to (doing only the first will probably be sufficient). Each stage adds features from the last. The "->" shows message transmission.
 
- # *src->mf->gateway*: Basic implementation, includes src1->mf1->src2->mf2->gateway support 
- # *src->src->mf->gateway*: Add clustering. _Should_ be fairly simple if we assume a static source node configuration
- # *gateway->mf->src*: Adds duplex communication. This is likely to be MUCH more complicated (I cant see us getting here)
+ # *src->mf->gateway*: Basic implementation (includes src1->mf1->src2->mf2->gateway support)
+ # *src->src->mf->gateway*: Add clustering. _Should_ be fairly simple if we assume a static source node configuration. This is where mesh networking gets added.
+ # *gateway->mf->src*: Adds duplex communication. This is likely to be MUCH more complicated to do well (I cant see us getting here). A very simple implementation might be possible.
 
 = Algorithm - Stage 1 =
 
-Support for:
+Support for one way updates including:
  * src->mf->gateway
  * src1->mf1->src2->mf2->gateway
 
 == Packets ==
 
-=== Source Update Packet ===
+Two types of packets
+
+=== Update Packet ===
 
 Sent by the source when the value for one of its keys gets updated.
 
 Fields:
- * *Source ID*: 
- * *Timestamp*: When the message was generated
- * *Key*: What 
- * Key update counter (increments with each update by the source)
+ * *Source ID*: Globally unique for each source node.
+ * *Timestamp*: When the message was generated. Used for throwing away old packets
+ * *Key*: What value is being updated by this packet. 
+ * *Key update number*: What is the version of the value in this packet. Increments each time the source modifies the value associated with the given key. If a ferry comes across two updates for a key (specific to a single source), it chooses to keep the newest value. Also used when gateway sends ack packets.
+ * *Value*: The new value (associated with the key field)
+
+=== ACK Packet ===
+
+Sent by the gateway when it receives a source update
+
+Fields: 
