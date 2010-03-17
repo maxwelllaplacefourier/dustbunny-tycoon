@@ -4,7 +4,7 @@
 
  * Delay tolerant
  * Loss tolerant
- * Relatively limited packet size (say 64 kb)
+ * Relatively limited packet size (say 64-256 kb)
  * Independent packets - ie no segmentation and reassembly OR use of fountain/erasure ECCs (ex. [http://en.wikipedia.org/wiki/Raptor_code raptor codes])
 
 = Information From Sources =
@@ -20,7 +20,7 @@
 
 == Network Entities (ie Node Types) ==
 
-*Source:* Nodes which generate messages to be delivered to gateways
+*Source:* Nodes which generate messages to be delivered to gateways. A message from any source can be delivered to any gateway.
 
 *Ferry:* Mobile transport mechanisms for messages. Provided a delayed link to transport messages from source nodes to destination gateways.
 
@@ -31,7 +31,8 @@
  * Packet timeout (from [http://portal.acm.org/citation.cfm?id=989483])
  * Use location aware partitions and ferries?
  * Are we implementing a routing algorithm or a simpler delivery algorithm
- * To what extent are nodes 
+   * Routing can either be 'source routing' or 'per-hop' routing (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
+ * Do source nodes store messages for inter-ferry transfer (ie message path: src1 -> f1 -> src2 -> f2 -> gateway)
 
 == Simplifications and Assumptions ==
 
