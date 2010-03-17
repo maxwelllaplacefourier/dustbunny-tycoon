@@ -84,6 +84,7 @@ Sent by the source when the value for one of its keys gets updated.
 Fields:
  * *Source ID*: Globally unique for each source node.
  * *Packet timestamp*: When the message was generated. Used for throwing away old packets. Note that this is NOT when the value was changed.
+ * *Copied counter*: Number of times the packet has been copied (
  * *Key*: What value is being updated by this packet. 
  * *Key update counter*: What is the version of the value in this packet. Increments each time the source modifies the value associated with the given key. If a ferry comes across two updates for a key (specific to a single source), it chooses to keep the newest value. Also used when gateway sends ack packets.
  * *Value*: The new value (associated with the key field). This is the payload - the data associated with the packet.
@@ -106,3 +107,11 @@ When the application writes a new value for a given key:
  # Wait for another ferry
   # If the ferry is carrying an ACK, END
   # Else, create another update packet and send it to the ferry
+
+=== Transfer Node Behavior ===
+
+TODO
+
+=== Packet Dropping ===
+
+Since each transition node has limited
