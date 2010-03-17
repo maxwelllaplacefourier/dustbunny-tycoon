@@ -18,15 +18,15 @@ Applications using the network must have the following characteristics:
 
  * MANET protocols (DSDV, OSLR, AODV, DSR) only work for connected subgraphs (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
 
-= Specific to Our Project  =
+= Our Project  =
 
 == General Premise ==
 
-The network contains numerous uniquely identifiable source nodes. Each source node supports a limited number of properties (in the form of key/value pairs). The network is designed to ensure a central repository has the current key/value pair for every source node.
+The network contains numerous uniquely identifiable source nodes. Each source node supports a limited number of properties (in the form of key/value pairs). The network is designed to synchronize a central repository with the current key/value pair for every source node.
 
 == Network ==
 
-=== Network Entities (ie Node Types) ===
+=== Network Entities ===
 
 *Message*: Contains data which updates the value associated with a source node, key pair. 
 
