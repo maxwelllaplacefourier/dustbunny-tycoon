@@ -12,13 +12,13 @@ Applications using the network must have the following characteristics:
 = Information From Sources =
 
  * We are dealing with task-oriented mobility in ferries (defn from [http://portal.acm.org/citation.cfm?id=989483 Message ferrying approach for data delivery] - this sources deals with message oriented mobility)
- * I was originally considering a scheme where nodes cluster and 'gateway nodes' (not to be confused with the gateway nodes as defined in the network entities section below) are responsible for communicating with ferries (terminology from section 6 of [http://portal.acm.org/citation.cfm?id=989483 Message ferrying approach for data delivery])
+ * I was originally considering a scheme where nodes cluster and 'gateway nodes' (not to be confused with the gateway nodes as defined in the network entities section below) are responsible for communicating with ferries (terminology from section 6 of [http://portal.acm.org/citation.cfm?id=989483 Message ferrying approach for data delivery]). This would come in stage 2 (if at all)
 
 == Existing Algorithms ==
 
  * MANET protocols (DSDV, OSLR, AODV, DSR) only work for connected subgraphs (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
 
-= Specific to Our Project - General  =
+= Specific to Our Project  =
 
 == General Premise ==
 
@@ -56,14 +56,28 @@ The network contains numerous uniquely identifiable source nodes. Each source no
 
  * All or nothing wireless links (ie no fading - either two nodes can transmit or they cant)
 
-= Algorithm =
+== Project Roadmap == 
+
+There are a few stages to implementing and simulating our project. I am not sure how many we will get to (doing only the first will probably be sufficient). Each stage adds features from the last. The "->" shows message transmission 
+
+ # *src->mf->gateway*: Basic implementation, includes src1->mf1->src2->mf2->gateway support 
+ # *src->src->mf->gateway*: Add clustering. _Should_ be fairly simple if we assume a static source node configuration
+ # *gateway->mf->src*: Adds duplex communication. This is likely to be MUCH more complicated (I cant see us getting here)
+
+= Algorithm - Stage 1 =
+
+Support for:
+ * src->mf->gateway
+ * src1->mf1->src2->mf2->gateway
 
 == Packets ==
 
 === Source Update Packet ===
 
+Sent by the source when the value for one of its keys gets updated.
+
 Fields:
- * Source ID
- * Timestamp
- * Property key (what is being updated)
+ * *Source ID*: 
+ * *Timestamp*: When the message was generated
+ * *Key*: What 
  * Key update counter (increments with each update by the source)
