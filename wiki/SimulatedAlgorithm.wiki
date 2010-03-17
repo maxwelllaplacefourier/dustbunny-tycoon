@@ -7,9 +7,15 @@
  * Relatively limited packet size (say 64 kb)
  * Independent packets - ie no segmentation and reassembly OR use of fountain/erasure ECCs (ex. [http://en.wikipedia.org/wiki/Raptor_code raptor codes])
 
-== Network ==
+= Terminology =
 
  * We are dealing with task-oriented mobility in ferries (defn from [http://portal.acm.org/citation.cfm?id=989483] - this sources deals with message oriented mobility)
+ * I was originally considering a scheme where nodes cluster and gateway nodes are responsible for communicating with ferries (terminology from section 6 of [http://portal.acm.org/citation.cfm?id=989483])
+
+= Simplifications =
+
+ * All or nothing wireless links (ie no fading - either two nodes can transmit or they cant)
+
 
 = General Considerations =
 
