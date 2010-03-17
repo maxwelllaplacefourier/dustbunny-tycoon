@@ -83,13 +83,26 @@ Sent by the source when the value for one of its keys gets updated.
 
 Fields:
  * *Source ID*: Globally unique for each source node.
- * *Timestamp*: When the message was generated. Used for throwing away old packets
+ * *Packet timestamp*: When the message was generated. Used for throwing away old packets. Note that this is NOT when the value was changed.
  * *Key*: What value is being updated by this packet. 
- * *Key update number*: What is the version of the value in this packet. Increments each time the source modifies the value associated with the given key. If a ferry comes across two updates for a key (specific to a single source), it chooses to keep the newest value. Also used when gateway sends ack packets.
- * *Value*: The new value (associated with the key field)
+ * *Key update counter*: What is the version of the value in this packet. Increments each time the source modifies the value associated with the given key. If a ferry comes across two updates for a key (specific to a single source), it chooses to keep the newest value. Also used when gateway sends ack packets.
+ * *Value*: The new value (associated with the key field). This is the payload - the data associated with the packet.
 
 === ACK Packet ===
 
 Sent by the gateway when it receives a source update
 
 Fields: 
+
+== Behavior ==
+
+=== Source Node - Sending an Update ===
+
+When the application writes a new value for a given key:
+ # Add one to the key update counter (for that key)
+ # If possible send an update to a gateway directly
+ # Wait for a message ferry to come in range
+ # Create an update packet and send it to the ferry
+ # Wait for another ferry
+  # If the ferry is carrying an ACK, END
+  # Else, create another update packet and send it to the ferry
