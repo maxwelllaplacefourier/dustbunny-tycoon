@@ -1,0 +1,9 @@
+#summary External Sources
+
+See project webpage at [http://www.sfu.ca/~tty2/427project.html]
+
+= Source =
+
+A message ferrying approach for data delivery in sparse mobile ad hoc networks
+ * [http://portal.acm.org/citation.cfm?id=989483]
+ * Currently in webpage source list
