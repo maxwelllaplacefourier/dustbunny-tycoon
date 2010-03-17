@@ -16,8 +16,8 @@
 
  * All or nothing wireless links (ie no fading - either two nodes can transmit or they cant)
 
-
 = General Considerations =
 
  * Packet timeout (from [http://portal.acm.org/citation.cfm?id=989483])
  * Location aware partitions and ferries (?)
+ * Routing algorithm vs a simpler delivery algorithm
