@@ -66,4 +66,4 @@ Fields:
  * Source ID
  * Timestamp
  * Property key (what is being updated)
- * Key update counter
+ * Key update counter (increments with each update by the source)
