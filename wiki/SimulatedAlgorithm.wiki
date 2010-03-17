@@ -9,8 +9,8 @@
 
 = Information From Sources =
 
- * We are dealing with task-oriented mobility in ferries (defn from [http://portal.acm.org/citation.cfm?id=989483] - this sources deals with message oriented mobility)
- * I was originally considering a scheme where nodes cluster and 'gateway nodes' (not to be confused with the gateway nodes as defined in the network entities section below) are responsible for communicating with ferries (terminology from section 6 of [http://portal.acm.org/citation.cfm?id=989483])
+ * We are dealing with task-oriented mobility in ferries (defn from [http://portal.acm.org/citation.cfm?id=989483 Message ferrying approach for data delivery] - this sources deals with message oriented mobility)
+ * I was originally considering a scheme where nodes cluster and 'gateway nodes' (not to be confused with the gateway nodes as defined in the network entities section below) are responsible for communicating with ferries (terminology from section 6 of [http://portal.acm.org/citation.cfm?id=989483 Message ferrying approach for data delivery])
 
 == Existing Algorithms ==
 
@@ -18,13 +18,15 @@
 
 = Our Simulation Implementation =
 
-== Network Entities (ie Node Types) ==
+== Network ==
+
+=== Network Entities (ie Node Types) ===
 
 *Source* (Abbreviated src): Nodes which generate messages to be delivered to gateways. A message from any source can be delivered to any gateway.
 
 *Message Ferry* (Abbreviated  mf): Mobile transport mechanisms for messages. Provided a delayed link to transport messages from source nodes to destination gateways.
 
-*Gateway* (Abbreviated gt): The destination for messages. Idea is that gateways connect to the internet. Once messages reach a gateway, they are routed through the internet to their final destination.
+*Gateway*: The destination for messages. Idea is that gateways connect to the internet. Once messages reach a gateway, they are routed through the internet to their final destination.
 
 == General Algorithms Considerations ==
 
@@ -33,6 +35,7 @@
  * Are we implementing a routing algorithm or a simpler delivery algorithm
    * Routing can either be 'source routing' or 'per-hop' routing (from [http://portal.acm.org/citation.cfm?id=1015484&dl=GUIDE&coll=GUIDE&CFID=82345016&CFTOKEN=82922258 Routing in a delay tolerant network])
  * Do source nodes store messages for inter-ferry transfer (ie message path: src1 -> mf1 -> src2 -> mf2 -> gateway)
+ * Do source nodes communicate with eachother (aka, clustering) (message path: src1 -> src2 -> mf1 -> gateway)
 
 == Simplifications and Assumptions ==
 
