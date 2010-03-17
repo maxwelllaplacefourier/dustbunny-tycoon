@@ -1,0 +1,9 @@
+#summary The algorithm we are simulating
+
+= Application Specification =
+
+ * Delay tolerant
+ * Loss tolerant
+ * Relatively limited packet size (say 64 kb)
+
+= General Considerations =
