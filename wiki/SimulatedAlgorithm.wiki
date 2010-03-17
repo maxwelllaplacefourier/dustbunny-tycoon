@@ -28,7 +28,7 @@ The network contains numerous uniquely identifiable source nodes. Each source no
 
 === Network Entities (ie Node Types) ===
 
-*Message*: Contains data which updates the value associated with a [source node, key] pair. 
+*Message*: Contains data which updates the value associated with a source node, key pair. 
 
 *Source Node* (Abbreviated src): Nodes which generate messages to be delivered to gateways. A message from any source can be delivered to any gateway.
 
