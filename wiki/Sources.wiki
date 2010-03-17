@@ -7,3 +7,5 @@ See project webpage at [http://www.sfu.ca/~tty2/427project.html]
 A message ferrying approach for data delivery in sparse mobile ad hoc networks
  * [http://portal.acm.org/citation.cfm?id=989483]
  * Currently in webpage source list
+ * Provides a really good general overview
+ * Focuses on introducing non-randomness in message ferries - not really what we are focused on
