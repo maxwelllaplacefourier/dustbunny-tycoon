@@ -64,5 +64,6 @@ The network contains numerous uniquely identifiable source nodes. Each source no
 
 Fields:
  * Source ID
+ * Timestamp
  * Property key (what is being updated)
  * Key update counter
