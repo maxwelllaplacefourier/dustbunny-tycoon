@@ -128,4 +128,7 @@ Define the following weighting function (lower is better). Sort packets by weigh
 w(pkt) = a(pkt age) + b(pkt copied counter) - c(is packet an ack?)
 }}}
 
-_Need to check the performance of this - want to consider size?_
+General notes on this:
+ * I pulled this out of my ass so considering others might be a good idea
+ * Bonus for ACK packets - might want to limit the bonus based on percent of packets which are acks
+ * Want to consider the size of the packet?
