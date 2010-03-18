@@ -122,6 +122,10 @@ Transfer nodes include ferry nodes and source nodes.
 
 Since each transition node has limited amount of memory, not all packets can be kept. The following will be used to determine which packets to keep.
 
-Define the following weighting function:
+Define the following weighting function (lower is better). Sort packets by weighting and keep as many as possible.
 
-w(pkt) = a(pkt age) + b(pkt copied counter) + 
+{{{
+w(pkt) = a(pkt age) + b(pkt copied counter) - c(is packet an ack?)
+}}}
+
+_Need to check the performance of this - want to consider size?_
