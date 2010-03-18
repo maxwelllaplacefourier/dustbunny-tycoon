@@ -93,7 +93,7 @@ Fields:
 
 Sent by the gateway when it receives a source update
 
-Fields: 
+Fields: Same as update packet (without the value field)
 
 == Behavior ==
 
@@ -110,7 +110,10 @@ When the application writes a new value for a given key:
 
 === Transfer Node Behavior ===
 
-TODO
+Transfer nodes include ferry nodes and source nodes. 
+ # Exchange ACK packets and remove redundant updated packets in buffer.
+ # Exchange update packets
+ # Decide what packets to keep based on packet dropping rules describe below
 
 === Packet Dropping ===
 
