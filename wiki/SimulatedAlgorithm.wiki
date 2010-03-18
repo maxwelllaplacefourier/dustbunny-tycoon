@@ -6,8 +6,9 @@ Applications using the network must have the following characteristics:
 
  * Delay tolerant
  * Loss tolerant
- * Relatively limited packet size (say 64-256 kb)
- * Independent packets - ie no segmentation and reassembly OR use of fountain/erasure ECCs (ex. [http://en.wikipedia.org/wiki/Raptor_code raptor codes])
+ * Relatively limited packet size (say 64 kb)
+ * Independent packets - ie no segmentation and reassembly
+  * Could use of fountain/erasure ECCs (ex. [http://en.wikipedia.org/wiki/Raptor_code raptor codes]). This wont be implemented but might be something to talk about in the report.
 
 = Information From Sources =
 
@@ -36,7 +37,7 @@ Terminology specific to this project.
 
 *Message Ferry* (Abbreviated  mf): Mobile transport mechanisms for messages. Provided a delayed link to transport messages from source nodes to destination gateways.
 
-*Gateway*: The destination for messages. Idea is that gateways connect to the internet. Once messages reach a gateway, they are routed through the internet to their final destination. *No source-source communication* (at least initially) 
+*Gateway*: The destination for messages. Idea is that gateways connect to the internet. Once messages reach a gateway, they are routed through the internet to their final destination. *No src-src communication* (at least initially) 
 
 === Network Topology - For Simulation  ===
 
@@ -84,14 +85,14 @@ Sent by the source when the value for one of its keys gets updated.
 Fields:
  * *Source ID*: Globally unique for each source node.
  * *Packet timestamp*: When the message was generated. Used for throwing away old packets. Note that this is NOT when the value was changed.
- * *Copied counter*: Number of times the packet has been copied (
+ * *Copied counter*: Number of times the packet has been copied by transfer nodes
  * *Key*: What value is being updated by this packet. 
  * *Key update counter*: What is the version of the value in this packet. Increments each time the source modifies the value associated with the given key. If a ferry comes across two updates for a key (specific to a single source), it chooses to keep the newest value. Also used when gateway sends ack packets.
  * *Value*: The new value (associated with the key field). This is the payload - the data associated with the packet.
 
 === ACK Packet ===
 
-Sent by the gateway when it receives a source update
+Sent by the gateway when it receives a source update.
 
 Fields: Same as update packet (without the value field)
 
@@ -110,11 +111,17 @@ When the application writes a new value for a given key:
 
 === Transfer Node Behavior ===
 
-Transfer nodes include ferry nodes and source nodes. 
+Transfer nodes include ferry nodes and source nodes.
+ # If ferry-src communication -> do source node behavior first.
  # Exchange ACK packets and remove redundant updated packets in buffer.
+  # If both nodes contain the same packet but have different copied counter values, updated the fields on both packets to 1+max(pk1,pk2).
  # Exchange update packets
  # Decide what packets to keep based on packet dropping rules describe below
 
 === Packet Dropping ===
 
-Since each transition node has limited
+Since each transition node has limited amount of memory, not all packets can be kept. The following will be used to determine which packets to keep.
+
+Define the following weighting function:
+
+w(pkt)
