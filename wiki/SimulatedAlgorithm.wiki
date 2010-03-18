@@ -96,9 +96,9 @@ Sent by the gateway when it receives a source update.
 
 Fields: Same as update packet (without the value field)
 
-== Behavior ==
+== Processes ==
 
-=== Source Node - Sending an Update ===
+=== Source Node Process - Sending an Update ===
 
 When the application writes a new value for a given key:
  # Add one to the key update counter (for that key)
@@ -109,7 +109,7 @@ When the application writes a new value for a given key:
   # If the ferry is carrying an ACK, END
   # Else, create another update packet and send it to the ferry
 
-=== Transfer Node Behavior ===
+=== Transfer Node Process Behavior ===
 
 Transfer nodes include ferry nodes and source nodes.
  # If ferry-src communication -> do source node behavior first.
@@ -118,9 +118,11 @@ Transfer nodes include ferry nodes and source nodes.
  # Exchange update packets
  # Decide what packets to keep based on packet dropping rules describe below
 
-=== Packet Dropping ===
+=== Gateway Node Process ===
 
-Since each transition node has limited amount of memory, not all packets can be kept. The following will be used to determine which packets to keep.
+== Packet Dropping ==
+
+Since each transfer node has limited amount of memory, not all packets can be kept. The following will be used to determine which packets to keep.
 
 Define the following weighting function (lower is better). Sort packets by weighting and keep as many as possible.
 
