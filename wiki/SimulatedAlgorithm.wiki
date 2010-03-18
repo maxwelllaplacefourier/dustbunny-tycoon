@@ -124,9 +124,8 @@ Since each transition node has limited amount of memory, not all packets can be 
 
 Define the following weighting function (lower is better). Sort packets by weighting and keep as many as possible.
 
-{{{
-w(pkt) = a(pkt age) + b(pkt copied counter) - c(is packet an ack?)
-}}}
+`w(pkt) = a*(pkt age) + b*(pkt copied counter) - c*(is packet an ack?)`
+
 
 General notes on this:
  * I pulled this out of my ass so considering others might be a good idea
